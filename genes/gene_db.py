@@ -1,8 +1,8 @@
 """Module for mapping genes."""
-from typing import Union, Sequence
+from typing import Union, Iterable
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 
 class GeneDB:
@@ -27,10 +27,10 @@ class GeneDB:
 
         self.entrez_genes = {str(entrez_id): str(official_symbol) for entrez_id, official_symbol in zip(entrez_genes, official_symbols)}
 
-    def to_official_symbol_interactor(self, entrez_id: Union[str, Sequence[str]]) -> str:
+    def to_official_symbol_interactor(self, entrez_id: Union[str, Iterable[str]]) -> str:
         if isinstance(entrez_id, str):
             return self.entrez_genes[entrez_id]
-        elif isinstance(entrez_id, Sequence):
+        elif isinstance(entrez_id, Iterable):
             return [self.entrez_genes[id] for id in entrez_id]
         else:
             raise TypeError(f"Entrez gene ID should be a string or sequence, found: {type(entrez_id)}.")
