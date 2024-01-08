@@ -2,6 +2,7 @@ from typing import Union, Iterable
 
 import pandas as pd
 from sklearn.model_selection import KFold
+from tqdm import tqdm
 
 
 def cross_validate(algorithm, network: Union[str, pd.DataFrame], seed_genes: Union[str, pd.DataFrame],
@@ -24,7 +25,7 @@ def cross_validate(algorithm, network: Union[str, pd.DataFrame], seed_genes: Uni
 
     k_fold = KFold(n_splits=num_folds, shuffle=True, random_state=42)
 
-    for train_index, _ in k_fold.split(seed_genes):
+    for train_index, _ in tqdm(k_fold.split(seed_genes), disable=not kwargs.get('verbose', False)):
         # We divide the set in train and test subsets
         train_seed_genes = seed_genes.iloc[train_index]
 
