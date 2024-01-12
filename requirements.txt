@@ -7,3 +7,4 @@ requests
 python-dotenv
 diamond @ git+https://github.com/jonasbarth/DIAMOnD.git
 pytest
+pyperclip
