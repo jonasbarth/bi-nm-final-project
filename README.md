@@ -17,6 +17,13 @@ Install the required pip packages in the `requirements.txt` file:
 pip install -r requirements.txt
 ```
 
+## Intermediate Files
+The project generates several files that can be found at the following locations:
+
+* `data`: contains predicted disease genes and DGIDB results.
+* `figures`: figures used in the report.
+* `metrics`: contains cross validation metrics.
+
 ## 1. PPI and GDA Data Gathering and Processing
 The first step of the project is to gather Protein-Protein Interaction (PPI) and
 Polydactyly Gene Disease Association (GDA) data. The code for fetching the data,
