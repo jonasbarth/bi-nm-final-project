@@ -11,7 +11,13 @@ organised into 4 parts:
 3. Putative Disease Identification.
 4. Drug Repurposing.
 
-## 1. PPI and GDA Data Gathering and Processing.
+## Install Requirements
+Install the required pip packages in the `requirements.txt` file:
+```
+pip install -r requirements.txt
+```
+
+## 1. PPI and GDA Data Gathering and Processing
 The first step of the project is to gather Protein-Protein Interaction (PPI) and
 Polydactyly Gene Disease Association (GDA) data. The code for fetching the data,
 processing it, describing it, and preparing it for the gene disease identification
@@ -34,3 +40,24 @@ Running the entire notebook will generate 5 files:
 * `gda_summary_df.csv`: a summary of the Polydactyly GDA and basic network data.
 * `network_metrics.csv`: graph metrics for the disease genes of the disease LCC.
 * `betweenness_centrality_csv_degree.pdf`: a scatterplot of node betweenness centrality as a function of node degree.
+
+## 2. Comparative Analysis of Gene Disease Identification Algorithms
+Using the `ppi_lcc.txt` and `seed_genes.txt` files, we want to compare three different algorithms in their gene disease
+prediction capabilities:
+
+* DIAMOnD
+* DiaBLE
+* Diffusion
+
+The [`2_cross_validation`](2_cross_validation.ipynb) notebook will run a Cross Validation (CV) of these three algorithms
+on the `ppi_lcc.txt` and `seed_genes.txt` files, assuming that they are in the project root directory. It will save the 
+resulting metrics files in a `metric` folder:
+
+* `metrics/cv_diamond.csv`: precision, recall, and F1 metrics for DIAMonD.
+* `metrics/cv_diable.csv`: precision, recall, and F1 metrics for DiaBLE.
+* `metrics/cv_diffusion.csv`: precision, recall, and F1 metrics for the Cytoscape Diffusion algorithm.
+
+Additionally, there will be two plots in the `figures` folder:
+
+* `figures/diffusion_comparison.pdf`: precision, recall, and F1 metrics comparison for various `time` parameter values.
+* `figures/algorithm_comparison.pdf`: precision, recall, and F1 metrics comparison between DIAMOnD, DiaBLE, and Diffusion.
