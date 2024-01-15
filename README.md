@@ -49,6 +49,11 @@ prediction capabilities:
 * DiaBLE
 * Diffusion
 
+### Requirements
+* `ppi_lcc.txt` file from point 1 in the project root folder.
+* `seed_genes.txt` file from point 1 in the project root folder.
+
+### Notebook
 The [`2_cross_validation`](2_cross_validation.ipynb) notebook will run a Cross Validation (CV) of these three algorithms
 on the `ppi_lcc.txt` and `seed_genes.txt` files, assuming that they are in the project root directory. It will save the 
 resulting metrics files in a `metric` folder:
@@ -61,3 +66,24 @@ Additionally, there will be two plots in the `figures` folder:
 
 * `figures/diffusion_comparison.pdf`: precision, recall, and F1 metrics comparison for various `time` parameter values.
 * `figures/algorithm_comparison.pdf`: precision, recall, and F1 metrics comparison between DIAMOnD, DiaBLE, and Diffusion.
+
+## 3. Putative Disease Identification
+To identify new potential disease genes, we run the best algorithm (in our case diffusion) again to predict 100 disease
+genes. The notebook [`3_4_putative_disease_gene_identification`](3_4_putative_disease_gene_identification.ipynb) contains
+code for running the algorithm and copying the 100 gene symbol identifiers into the clipboard, such that they can be
+pasted into the Enrichment Analysis search form.
+
+### Output
+The notebook will save the predicted seed genes at:
+
+* `data/putative_disease_genes_entrez.txt`: file with Entrez IDs of putative disease genes. 
+* `data/putative_disease_genes_offical_symbols.txt`: file with official symbols of putative disease genes. 
+
+## 4. Drug Repurposing
+For the drug repurposing, we want to find approved drugs associated with the predicted disease genes. Again, the notebook 
+[`3_4_putative_disease_gene_identification`](3_4_putative_disease_gene_identification.ipynb) contains the code for
+copying the 100 predicted genes to the clipboard so that they can be pasted into the 
+[dgidb search form](https://old.dgidb.org/search_interactions). 
+
+### Output
+The resulting `.tsv` file from the dgidb search can be found at `data/dgidb_approved_drugs.tsv`. 

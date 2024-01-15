@@ -1,0 +1,6 @@
+search_term	match_term	match_type	gene	drug	interaction_types	sources	pmids
+AGBL4	AGBL4	Definite	AGBL4	USTEKINUMAB	""	PharmGKB	27977334
+AGBL4	AGBL4	Definite	AGBL4	RIFAMPIN	""	PharmGKB	""
+BHMT	BHMT	Definite	BHMT	BETAINE HYDROCHLORIDE	""	ChemblInteractions	""
+PAX2	PAX2	Definite	PAX2	PROGESTERONE	""	NCI	11850818
+KRT18	KRT18	Definite	KRT18	RIBAVIRIN	""	NCI	17713161
