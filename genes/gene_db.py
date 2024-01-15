@@ -1,5 +1,5 @@
 """Module for mapping genes."""
-from typing import Union, Iterable
+from typing import Union, Iterable, List
 
 import numpy as np
 import pandas as pd
@@ -27,7 +27,15 @@ class GeneDB:
 
         self.entrez_genes = {str(entrez_id): str(official_symbol) for entrez_id, official_symbol in zip(entrez_genes, official_symbols)}
 
-    def to_official_symbol_interactor(self, entrez_id: Union[str, Iterable[str]]) -> str:
+    def to_official_symbol_interactor(self, entrez_id: Union[str, Iterable[str]]) -> List[str]:
+        """Converts Entrez IDs to official symbol interactors.
+
+        Args:
+            entrez_id (Union[str, Iterable[str]]): Entrez IDs as strings to convert.
+
+        Returns:
+            List[str]: List of official symbol interactors that match the Entrez IDs. Order is preserved.
+        """
         if isinstance(entrez_id, str):
             return self.entrez_genes[entrez_id]
         elif isinstance(entrez_id, Iterable):
